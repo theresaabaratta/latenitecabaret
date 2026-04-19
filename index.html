@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Late Night Cabaret | Burlesque, Revue & Spectacle Guide</title>
+  <meta name="description" content="Late Night Cabaret is an informational guide to burlesque, male revue, female-led cabaret, cirque-style theater, and modern stage spectacle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --bg-soft: #14141c;
+      --panel: #1b1b25;
+      --panel-2: #222231;
+      --text: #f5f2eb;
+      --muted: #cfc7ba;
+      --gold: #d8b36a;
+      --gold-soft: #f1ddb0;
+      --accent: #8d274d;
+      --accent-2: #5f1832;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 14px 34px rgba(0,0,0,0.28);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top right, rgba(141,39,77,0.26), transparent 28%),
+        radial-gradient(circle at top left, rgba(216,179,106,0.16), transparent 22%),
+        linear-gradient(180deg, #08080b 0%, #0f0f15 45%, #12121a 100%);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    .navbar {
+      background: rgba(8,8,12,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: var(--text) !important;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--gold) !important;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #c89f4c);
+      color: #141414;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #e6c27c, #c9973d);
+      color: #111;
+    }
+
+    .btn-outline-light:hover {
+      color: #111;
+    }
+
+    .hero {
+      padding: 120px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(to bottom, rgba(18,18,26,0), rgba(18,18,26,1));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero .lead {
+      font-size: 1.1rem;
+      max-width: 880px;
+      color: var(--muted);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-chip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--gold-soft);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      font-size: 0.92rem;
+      display: inline-block;
+      margin: 0.35rem 0.35rem 0 0;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-dark {
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 860px;
+      margin-bottom: 2rem;
+    }
+
+    .info-card,
+    .show-card,
+    .feature-card {
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .show-card h3,
+    .feature-card h3,
+    .info-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .show-card p,
+    .feature-card p,
+    .info-card p,
+    .info-card li {
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(216,179,106,0.12);
+      color: var(--gold-soft);
+      border: 1px solid rgba(216,179,106,0.24);
+      margin-bottom: 0.9rem;
+    }
+
+    .show-card a {
+      text-decoration: none;
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
+
+    .show-card a:hover {
+      color: #fff;
+    }
+
+    .comparison-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      height: 100%;
+    }
+
+    .comparison-box h4 {
+      color: var(--gold-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .list-check {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .list-check li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.65rem;
+      color: var(--muted);
+    }
+
+    .list-check li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .spotlight {
+      background:
+        linear-gradient(135deg, rgba(141,39,77,0.22), rgba(216,179,106,0.10)),
+        linear-gradient(180deg, #191924, #111119);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-band {
+      background:
+        radial-gradient(circle at center, rgba(216,179,106,0.14), transparent 35%),
+        linear-gradient(180deg, #14141b, #0b0b10);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Late Night Cabaret</a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about-burlesque">What Is Burlesque</a></li>
+          <li class="nav-item"><a class="nav-link" href="#female-shows">Female Shows</a></li>
+          <li class="nav-item"><a class="nav-link" href="#male-shows">Male Shows</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cirque-shows">Cirque Theater</a></li>
+          <li class="nav-item"><a class="nav-link" href="#styles">Styles & Groups</a></li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a class="btn btn-gold px-4" href="#featured-links">Explore Shows</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="eyebrow">Stage glamour • live spectacle • after-dark performance</span>
+          <h1>Late Night Cabaret</h1>
+          <p class="lead mb-4">
+            A stylish guide to burlesque, revue, cabaret, cirque-inspired theater, and high-energy live productions.
+            From classic showgirl glamour to male revue headliners and mixed-cast stage spectacles, this site is built
+            for people who want to understand the scene and discover standout productions.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#featured-links" class="btn btn-gold btn-lg px-4">See Current Show Links</a>
+            <a href="#about-burlesque" class="btn btn-outline-light btn-lg px-4">Learn the Basics</a>
+          </div>
+          <div class="mt-4">
+            <span class="stat-chip">Female-led burlesque</span>
+            <span class="stat-chip">Male revue & showboy productions</span>
+            <span class="stat-chip">Cirque-style theater</span>
+            <span class="stat-chip">Mixed ensemble cabaret</span>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="hero-panel">
+            <h2 class="h4 mb-3">What this homepage covers</h2>
+            <ul class="list-check">
+              <li>A practical explanation of what burlesque is</li>
+              <li>How female, male, and mixed groups approach the form</li>
+              <li>Official links to major current productions</li>
+              <li>A separate section for cirque-style and theater-driven spectacle</li>
+              <li>A tasteful, informational structure that works for a broad audience</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT IS BURLESQUE -->
+  <section class="section" id="about-burlesque">
+    <div class="container">
+      <span class="tag">Burlesque basics</span>
+      <h2 class="section-title">What burlesque is</h2>
+      <p class="section-subtitle">
+        Burlesque is a performance style that blends dance, music, costuming, character, theatrical pacing, and audience connection.
+        Depending on the production, it can lean classic and glamorous, comic and playful, avant-garde, or more revue-driven.
+        The common thread is presentation: burlesque usually emphasizes staging, personality, rhythm, and spectacle rather than raw movement alone.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="info-card">
+            <h3>Classic roots</h3>
+            <p>
+              Traditional burlesque grew out of theatrical entertainment, parody, variety stagecraft, and showgirl culture. Modern versions often keep the glamour, confidence, and stylized pacing while updating the music, choreography, and visual design.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="info-card">
+            <h3>Performance first</h3>
+            <p>
+              A strong burlesque act is usually more than steps. It can include storytelling, controlled reveals, dramatic entrances, comic timing, themed costuming, prop work, and a point of view that gives the act personality.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="info-card">
+            <h3>Many formats</h3>
+            <p>
+              Burlesque can appear as a solo spotlight, a female ensemble revue, a male showboy production, a mixed cast cabaret, or a larger theater spectacle that borrows from circus, dance, drag, or variety entertainment.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spotlight mt-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <h3 class="mb-3">How burlesque relates to male, female, and mixed groups</h3>
+            <p class="mb-3 text-light-emphasis" style="color: var(--muted);">
+              Female-led burlesque is often what people picture first: glamour, costume, confidence, musicality, and choreographed stage presence.
+              Male burlesque or showboy-style performance can draw from many of the same ideas, but often shifts the energy toward flirtation, strength, comedy, or more direct crowd engagement.
+              Mixed groups bring even more range, blending masculine, feminine, and nontraditional performance styles into one shared production.
+            </p>
+            <p class="mb-0 text-light-emphasis" style="color: var(--muted);">
+              In practice, the line between burlesque, revue, cabaret, and adult spectacle can blur. Some shows are traditional burlesque. Others are better described as revue or cabaret with burlesque influence. A smart informational site can acknowledge that range instead of forcing every production into one narrow label.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="comparison-box">
+              <h4>At a glance</h4>
+              <ul class="list-check">
+                <li><strong>Female burlesque:</strong> classic glamour, theatrical tease, showgirl styling, cabaret polish</li>
+                <li><strong>Male burlesque / revue:</strong> strong audience interaction, athletic movement, fantasy archetypes, higher-energy choreography</li>
+                <li><strong>Mixed ensembles:</strong> broader casting, more variety, stronger contrast in staging and tone</li>
+                <li><strong>Cirque-adjacent productions:</strong> acrobatics, larger visual design, theatrical worlds, spectacle-driven storytelling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEMALE SHOWS -->
+  <section class="section section-dark" id="female-shows">
+    <div class="container">
+      <span class="tag">Current standouts</span>
+      <h2 class="section-title">Popular female-led burlesque and revue-style shows</h2>
+      <p class="section-subtitle">
+        These productions are useful anchors for a late-night cabaret site because they represent active, recognizable female-led or female-fronted performance brands with strong stage identity, costuming, and revue appeal.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <span class="tag">Burlesque headliner</span>
+            <h3>Dita Von Teese</h3>
+            <p>
+              One of the clearest modern reference points for glamour-forward burlesque. This residency-style production leans into couture costuming, polished staging, classic showgirl influence, and a highly branded visual world.
+            </p>
+            <a href="https://www.venetianlasvegas.com/entertainment/dita-von-teese.html" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <span class="tag">Late-night revue</span>
+            <h3>X Burlesque</h3>
+            <p>
+              A long-running Strip production that fits the late-night cabaret lane well. It is more overtly revue-based than classic burlesque, but still relevant for audiences looking at female ensemble spectacle.
+            </p>
+            <a href="https://www.caesars.com/flamingo-las-vegas/shows/x-burlesque/" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <span class="tag">Showgirl-style revue</span>
+            <h3>FANTASY</h3>
+            <p>
+              A high-profile long-running production with dance, staging, and cabaret energy. It works well on an informational site as an example of the more revue-forward side of female-led late-night entertainment.
+            </p>
+            <a href="https://luxor.mgmresorts.com/en/entertainment/fantasy.html" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <span class="tag">Mixed sensual revue</span>
+            <h3>ROUGE</h3>
+            <p>
+              ROUGE sits at the intersection of adult revue, ensemble spectacle, and fantasy-driven stage production. It is useful when explaining how modern cabaret can include both female and male cast dynamics.
+            </p>
+            <a href="https://thestrat.com/entertainment/featured/rouge" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MALE SHOWS -->
+  <section class="section" id="male-shows">
+    <div class="container">
+      <span class="tag">Showboys & revue</span>
+      <h2 class="section-title">Popular male burlesque and male revue-style shows</h2>
+      <p class="section-subtitle">
+        Male productions are often described as revue shows more than traditional burlesque, but they belong in the same wider conversation about theatrical after-dark entertainment, audience engagement, dance, costuming, and fantasy-driven performance.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Iconic brand</span>
+            <h3>Chippendales</h3>
+            <p>
+              One of the best-known male revue brands in the world. For a homepage like this, Chippendales is the obvious anchor when talking about high-profile male-led stage entertainment and the mainstreaming of the male revue format.
+            </p>
+            <a href="https://chippendales.com/" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Theatrical male spectacle</span>
+            <h3>Magic Mike Live</h3>
+            <p>
+              A more theatrical, large-scale male performance production with strong choreography, immersive staging, and a slick stage identity. It is one of the clearest examples of male revue evolving into a premium modern live show.
+            </p>
+            <a href="https://www.saharalasvegas.com/entertainment/magic-mike-live/" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">High-energy audience favorite</span>
+            <h3>Thunder From Down Under</h3>
+            <p>
+              A high-energy, comedic, fantasy-forward production that is frequently grouped with the top male revue experiences on the Strip. It works well for a homepage section focused on recognizable male performance brands.
+            </p>
+            <a href="https://excalibur.mgmresorts.com/en/entertainment/thunder-from-down-under.html" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-4">
+        <div class="col-lg-6">
+          <div class="comparison-box">
+            <h4>How male burlesque differs from female burlesque</h4>
+            <p class="mb-0">
+              Male performance brands often emphasize bolder interaction, higher-amplitude choreography, fantasy archetypes, and a more direct crowd-facing energy. Female burlesque, especially in classic form, more often highlights theatrical build, styling, tease, and visual composition. Both, however, rely on timing, confidence, showmanship, and persona.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="comparison-box">
+            <h4>Why they still belong together on this site</h4>
+            <p class="mb-0">
+              A site called <strong>Late Night Cabaret</strong> can intelligently cover both. Audiences often discover these shows through the same interest funnel: nightlife, spectacle, stage glamour, group outings, and memorable live entertainment with personality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIRQUE -->
+  <section class="section section-dark" id="cirque-shows">
+    <div class="container">
+      <span class="tag">Theater spectacle</span>
+      <h2 class="section-title">Cirque theater and cabaret-adjacent spectacle shows</h2>
+      <p class="section-subtitle">
+        This section broadens the page beyond straight burlesque and revue. These productions bring in acrobatics, immersive staging, large-scale visuals, circus vocabulary, or theater-world storytelling that late-night cabaret audiences often also seek out.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Aquatic spectacle</span>
+            <h3>“O” by Cirque du Soleil</h3>
+            <p>
+              A major benchmark for visual theater and fluid stagecraft. This show is useful as a reference point for what happens when live performance becomes fully immersive spectacle.
+            </p>
+            <a href="https://www.cirquedusoleil.com/o" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Epic visual storytelling</span>
+            <h3>KÀ</h3>
+            <p>
+              Known for large-scale theatrical engineering and action-heavy staging. It represents the more dramatic, cinematic side of cirque theater.
+            </p>
+            <a href="https://www.cirquedusoleil.com/ka" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Urban nightlife energy</span>
+            <h3>Mad Apple</h3>
+            <p>
+              A fast-paced blend of acrobatics, dance, music, and comedy. Its nightlife mood makes it especially relevant to a “late night” editorial brand.
+            </p>
+            <a href="https://www.cirquedusoleil.com/mad-apple" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Racy circus-cabaret</span>
+            <h3>Absinthe</h3>
+            <p>
+              One of the strongest examples of adults-only circus-cabaret crossover. It combines comedy, burlesque influence, acrobatic virtuosity, and a sharply defined late-night personality.
+            </p>
+            <a href="https://www.caesars.com/caesars-palace/shows/absinthe/" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Wild-west cabaret theater</span>
+            <h3>Atomic Saloon Show</h3>
+            <p>
+              A rowdy mixed-format production with comedy, acrobatics, and burlesque-adjacent stage attitude. It is ideal for showing how cabaret can become a fully themed theatrical world.
+            </p>
+            <a href="https://spiegelworld.com/shows/atomic-saloon-show/" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="show-card">
+            <span class="tag">Modern spectacle theater</span>
+            <h3>Awakening</h3>
+            <p>
+              A contemporary large-stage production driven by visual storytelling, movement, effects, and theatrical design. It broadens the page beyond revue into full premium spectacle.
+            </p>
+            <a href="https://www.wynnlasvegas.com/entertainment/awakening" target="_blank" rel="noopener">Official show page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STYLES -->
+  <section class="section" id="styles">
+    <div class="container">
+      <span class="tag">Performance styles</span>
+      <h2 class="section-title">How females, males, and mixed groups do burlesque</h2>
+      <p class="section-subtitle">
+        One of the biggest misconceptions about burlesque is that there is only one correct format. In reality, the performance language changes depending on the cast, venue, music, intention, and audience relationship.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="feature-card">
+            <h3>Female burlesque</h3>
+            <p>
+              Female burlesque often leans into silhouette, glamour, restraint, precision, musical timing, and visual reveal. It can be classic, neo-burlesque, comic, conceptual, darkly theatrical, or highly polished and luxurious. Many iconic female acts use posture, walk, pose, eye line, and costume choreography as much as dance vocabulary.
+            </p>
+            <p class="mb-0">
+              In larger productions, female-led burlesque may become a full revue with chorus lines, vocal moments, specialty acts, and showgirl-inspired staging.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="feature-card">
+            <h3>Male burlesque and showboy performance</h3>
+            <p>
+              Male burlesque can overlap with revue, cabaret, and fantasy entertainment. Some acts are comic and character-driven. Others are athletic, seductive, and highly choreographed. Many male shows emphasize archetypes, themed numbers, charisma, direct audience play, and a stronger sense of momentum from song to song.
+            </p>
+            <p class="mb-0">
+              While the tone may differ, the core ingredients remain similar: confidence, costuming, control, timing, and audience connection.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="feature-card">
+            <h3>Mixed groups</h3>
+            <p>
+              Mixed ensembles can be some of the most interesting productions because they create contrast. A single show can move from glamour to comedy, from acrobatics to cabaret, from classic tease to ensemble spectacle. Mixed groups are also where many contemporary productions become more inclusive, more theatrical, and less tied to one historic format.
+            </p>
+            <p class="mb-0">
+              For an informational homepage, this is an important point: modern cabaret is often collaborative, hybrid, and intentionally fluid.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spotlight mt-5">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3 class="mb-3">Burlesque, revue, cabaret, and spectacle are related but not identical</h3>
+            <p style="color: var(--muted);">
+              Burlesque usually emphasizes theatrical tease, style, and persona. Revue often points to a sequence of entertainment numbers built around energy, fantasy, and audience pleasure. Cabaret suggests intimacy, nightlife, and performance variety. Spectacle points to scale: acrobatics, immersive visuals, advanced staging, and theatrical ambition.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="mb-3">Why this matters for your homepage</h3>
+            <p style="color: var(--muted);">
+              A homepage called <strong>Late Night Cabaret</strong> is strongest when it embraces all of these related forms. That gives you room to publish educational content, feature recognizable productions, and create internal pages later for burlesque history, show guides, performer profiles, and nightlife theater recommendations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED LINKS -->
+  <section class="section cta-band" id="featured-links">
+    <div class="container">
+      <span class="tag">Official links</span>
+      <h2 class="section-title">Featured current show links</h2>
+      <p class="section-subtitle">
+        These official pages are good starting points for readers who want to explore the current scene.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <h3>Female-led / burlesque-adjacent</h3>
+            <ul class="list-check">
+              <li><a href="https://www.venetianlasvegas.com/entertainment/dita-von-teese.html" target="_blank" rel="noopener">Dita Von Teese</a></li>
+              <li><a href="https://www.caesars.com/flamingo-las-vegas/shows/x-burlesque/" target="_blank" rel="noopener">X Burlesque</a></li>
+              <li><a href="https://luxor.mgmresorts.com/en/entertainment/fantasy.html" target="_blank" rel="noopener">FANTASY</a></li>
+              <li><a href="https://thestrat.com/entertainment/featured/rouge" target="_blank" rel="noopener">ROUGE</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <h3>Male revue / showboys</h3>
+            <ul class="list-check">
+              <li><a href="https://chippendales.com/" target="_blank" rel="noopener">Chippendales</a></li>
+              <li><a href="https://www.saharalasvegas.com/entertainment/magic-mike-live/" target="_blank" rel="noopener">Magic Mike Live</a></li>
+              <li><a href="https://excalibur.mgmresorts.com/en/entertainment/thunder-from-down-under.html" target="_blank" rel="noopener">Thunder From Down Under</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <h3>Cirque & theater spectacle</h3>
+            <ul class="list-check">
+              <li><a href="https://www.cirquedusoleil.com/o" target="_blank" rel="noopener">“O” by Cirque du Soleil</a></li>
+              <li><a href="https://www.cirquedusoleil.com/ka" target="_blank" rel="noopener">KÀ</a></li>
+              <li><a href="https://www.cirquedusoleil.com/mad-apple" target="_blank" rel="noopener">Mad Apple</a></li>
+              <li><a href="https://www.wynnlasvegas.com/entertainment/awakening" target="_blank" rel="noopener">Awakening</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="show-card">
+            <h3>Cabaret-circus crossover</h3>
+            <ul class="list-check">
+              <li><a href="https://www.caesars.com/caesars-palace/shows/absinthe/" target="_blank" rel="noopener">Absinthe</a></li>
+              <li><a href="https://spiegelworld.com/shows/atomic-saloon-show/" target="_blank" rel="noopener">Atomic Saloon Show</a></li>
+              <li><a href="https://spiegelworld.com/locations/las-vegas/" target="_blank" rel="noopener">More Spiegelworld productions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 p-4 rounded-4" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border);">
+        <p class="mb-0" style="color: var(--muted);">
+          Tip for future expansion: this homepage can easily grow into a larger content hub with dedicated pages for
+          <strong>female burlesque</strong>, <strong>male revue history</strong>, <strong>cabaret theater guides</strong>,
+          <strong>cirque-style productions</strong>, and <strong>city-based show roundups</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container d-flex flex-column flex-lg-row justify-content-between gap-3">
+      <div>
+        <strong>Late Night Cabaret</strong><br>
+        <span>An informational guide to burlesque, revue, spectacle, and theater nightlife.</span>
+      </div>
+      <div>
+        <a href="#about-burlesque" class="text-decoration-none me-3" style="color: var(--gold-soft);">What Is Burlesque</a>
+        <a href="#female-shows" class="text-decoration-none me-3" style="color: var(--gold-soft);">Female Shows</a>
+        <a href="#male-shows" class="text-decoration-none me-3" style="color: var(--gold-soft);">Male Shows</a>
+        <a href="#cirque-shows" class="text-decoration-none" style="color: var(--gold-soft);">Cirque Theater</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
